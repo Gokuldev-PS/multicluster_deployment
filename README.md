@@ -20,7 +20,7 @@ confluent-hub install connectorname:version
 
 ```
 
-You can also directly add the plugins on the connect node . I have shared a small below
+You can also directly add the plugins on the connect node . I have shared a sample below
 
 ```
 apiVersion: platform.confluent.io/v1beta1
