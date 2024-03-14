@@ -19,3 +19,30 @@ https://www.confluent.io/hub/
 confluent-hub install connectorname:version
 
 ```
+
+You can also directly add the plugins on the connect node . I have shared a small below
+
+```
+apiVersion: platform.confluent.io/v1beta1
+kind: Connect
+metadata:
+  name: connect
+  namespace: confluent
+spec:
+  replicas: 2
+  image:
+    application: confluentinc/cp-server-connect:7.6.0
+    init: confluentinc/confluent-init-container:2.8.0
+  build:
+    type: onDemand
+    onDemand:
+      plugins:
+        locationType: confluentHub
+        confluentHub:
+          - name: kafka-connect-azure-event-hubs
+            owner: confluentinc
+            version: 2.0.4
+          - name: kafka-connect-datagen
+            owner: confluentinc
+            version: 0.6.4
+```
